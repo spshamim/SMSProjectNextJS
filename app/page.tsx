@@ -17,7 +17,7 @@ export default function Page() {
     const [balance, setBalance] = useState(0);
 
     const checkBalance = async () => {
-        const RR = await axios.get(`http://bulksmsbd.net/api/getBalanceApi?api_key=${process.env.NEXT_PUBLIC_SMS_API_KEY}`);
+        const RR = await axios.get(`https://bulksmsbd.net/api/getBalanceApi?api_key=${process.env.NEXT_PUBLIC_SMS_API_KEY}`);
         setBalance(RR.data.balance);
     }
 
@@ -27,7 +27,7 @@ export default function Page() {
         let encodedMessage = encodeURIComponent(message);
 
         try {
-            const RR = await axios.post(`http://bulksmsbd.net/api/smsapi?api_key=${process.env.NEXT_PUBLIC_SMS_API_KEY}&type=text&number=${phone}&senderid=8809617621615&message=${encodedMessage}`);
+            const RR = await axios.post(`https://bulksmsbd.net/api/smsapi?api_key=${process.env.NEXT_PUBLIC_SMS_API_KEY}&type=text&number=${phone}&senderid=8809617621615&message=${encodedMessage}`);
             if (RR.data.response_code === 202) {
                 toast({
                     variant: "success",
